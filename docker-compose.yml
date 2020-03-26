@@ -1,0 +1,29 @@
+version: '3'
+services:
+  registration-database:
+    image: mysql:8.0.19
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_DATABASE: registration-database
+    restart: always
+    ports:
+      - "3316:3306"
+  # registration-service:
+  #   container_name: registration-service
+  #   build: registration-service
+  #   image: registration-service:0.0.1
+  #   ports:
+  #     - 8081:8081
+  #   links:
+  #     - database
+  # authorization-service:
+  #   container_name: authorization-service
+  #   build:
+  #     context: authorization-service
+  #     dockerfile: Dockerfile
+  #   image: authorization-service:latest
+  #   ports:
+  #     - 8082:8082
+  #   links:
+  #     - database:database
